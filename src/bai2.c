@@ -32,6 +32,24 @@ int main() {
 
 // --- SINH VIÊN VIẾT CODE CỦA HÀM DƯỚI ĐÂY ---
 int thanhToanHoaDon(float *soDuVi, float tongTien, float tyLeHoan, float *tienHoan) {
+    //Kiểm Tra Xem Ví Có Đủ Tiền Không
+    if (*soDuVi < tongTien) {
+        *tienHoan = 0.0f;
+        return 0; //Thanh Toán Thất Bại
+    }
+    //Trừ Tiền Hóa Đơn Khỏi So Dư Ví
+
+    *soDuVi = *soDuVi - tongTien;
+
+    //Tính Tiền Hoàn Theo Tỷ Lệ Được Truyền Vào
+
+    *tienHoan = tongTien * tyLeHoan;
+
+    //Cộng Tiền Hoàn Lại Vào Ví
+
+    *soDuVi = *soDuVi + *tienHoan;
+    return 1; //Thanh Toán Thành Công
+    
     // TODO: Viết code thanh toán và cập nhật số dư, tiền hoàn (dùng con trỏ)
     // Trả về 1 nếu thành công, 0 nếu thất bại (không đủ tiền)
     
